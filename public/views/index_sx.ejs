@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=\, initial-scale=1.0">
+  <title>Seasons</title>
+</head>
+<body>
+  <h1>Select a Season!</h1>
+  <ul>
+    <% const years = [...new Set(rows.map(item => item.eventDate.getFullYear()))]; %>
+    <%for(year of years){ %>
+      <li><a href="/Season/<%= year %>"><%= year %></a></li>
+   <% } %>
+</ul>
+</body>
+</html>

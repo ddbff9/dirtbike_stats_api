@@ -24,10 +24,23 @@ app.use(bodyparser.json());
 app.set('views', path.join(__dirname,'/public/views'));
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
+app.get('/' , async (req, res) => {
+  await mysqlConnection.query('SELECT * FROM race_events', (err, rows, fields) => {
+  if (!err){
+    res.render('index_sx', {rows});
+  } else
+  console.log(err);
+  })
+  });
+//TODO: Fix!!!
+// app.get('/season/:year' , async (req, res) => {
+//   await mysqlConnection.query('SELECT * FROM race_events WHERE YEAR(eventDate)= ? ' ,[year], (err, rows, fields) => {
+//   if (!err){
+//     res.render('season/index_season', {rows});
+//   } else
+//   console.log(err);
+//   })
+//   });
 
 app.get('/race_events' , (req, res) => {
   mysqlConnection.query('SELECT * FROM race_events', (err, rows, fields) => {
@@ -39,10 +52,11 @@ app.get('/race_events' , (req, res) => {
   } );
 
   app.get('/race_events/:id' , async (req, res) => {
-    const race = mysqlConnection.query('SELECT * FROM race_events WHERE eventID = ?',[req.params.id], (err, rows, fields) => {
+    const {id} = req.params
+    await mysqlConnection.query('SELECT * FROM race_events WHERE eventID = ?',[id], (err, rows, fields) => {
     if (!err){
-      res.render('event/details', { rows });
-      // res.send(rows);
+      console.log(fields);
+      res.render('event/details', { rows, fields });
     } else
     console.log(err);
     })

@@ -12,5 +12,13 @@
     <h2>Event Type: <%= rows[0]['eventType'] %></h2>
     <h2>Event Venue: <%= rows[0]['eventVenue'] %></h2>
     <h2>Event Date: <%= rows[0]['eventDate'] %></h2>
+
+    <h3>Available Fields:</h3>
+    <ul>
+    <% for(field of fields){%>
+      <li><%= field.name %> </li>
+    <% } %>
+    </ul>
+    
   </body>
 </html>
