@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ddbff9/dirtbike_stats_api#readme",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "mysql": "^2.18.1"
