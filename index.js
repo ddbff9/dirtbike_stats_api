@@ -32,15 +32,16 @@ app.get('/' , async (req, res) => {
   console.log(err);
   })
   });
-//TODO: Fix!!!
-// app.get('/season/:year' , async (req, res) => {
-//   await mysqlConnection.query('SELECT * FROM race_events WHERE YEAR(eventDate)= ? ' ,[year], (err, rows, fields) => {
-//   if (!err){
-//     res.render('season/index_season', {rows});
-//   } else
-//   console.log(err);
-//   })
-//   });
+
+app.get('/season/:year' , async (req, res) => {
+  const {year} = req.params;
+  await mysqlConnection.query('SELECT * FROM race_events WHERE YEAR(eventDate)= ? ' ,[year], (err, rows, fields) => {
+  if (!err){
+    res.render('season/index_season', {rows, year});
+  } else
+  console.log(err);
+  })
+  });
 
 app.get('/race_events' , (req, res) => {
   mysqlConnection.query('SELECT * FROM race_events', (err, rows, fields) => {

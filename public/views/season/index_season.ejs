@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Season</title>
+</head>
+<body>
+  <h1><%= year %>  Races!</h1>
+
+  <h2>Supercross</h2>
+  <ul>
+   <% for(row of rows) {%> 
+    <% if(row.eventType === 'SX'){ %> 
+      <li><%= row.eventName %> - <%= row.eventDate.toLocaleDateString('en-us', {year:"numeric", month:"long", day:"numeric"}) %> </li>
+      <% } %> 
+    <% } %> 
+  </ul>
+
+  <h2>Motocross</h2>
+  <ul>
+   <% for(row of rows) {%> 
+    <% if(row.eventType === 'MX'){ %> 
+      <li><%= row.eventName %> - <%= row.eventDate.toLocaleDateString('en-us', {year:"numeric", month:"long", day:"numeric"}) %> </li>
+      <% } %> 
+    <% } %> 
+  </ul>
+  <a href="/">Home</a>
+</body>
+</html>
