@@ -75,4 +75,4 @@ app.get('/race_events/city/:eventCity' , (req, res) => {
 
 app.listen(process.env.PORT || 3000,() =>{
   console.log('APP IS LISTENING ON PORT 3000!')
-})
+});
